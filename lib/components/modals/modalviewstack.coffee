@@ -13,6 +13,10 @@ module.exports = class KDModalViewStack extends KDObject
 
   addModal: (modal)->
 
+    unless modal instanceof KDModalView
+      debug 'modal must be an instanceof kd.ModalView'
+      return
+
     modal.on "KDObjectWillBeDestroyed", => @next()
 
     {lastToFirst} = @getOptions()
